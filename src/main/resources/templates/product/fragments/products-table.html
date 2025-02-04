@@ -1,0 +1,79 @@
+<div th:fragment="products-table">
+  <div class="card shadow">
+    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+      <h3 class="mb-0" th:text="#{product.products.title}"></h3>
+      <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#productModal">
+        <i class="fas fa-plus me-2"></i>
+        <span th:text="#{product.products.add}"></span>
+      </button>
+    </div>
+
+    <div class="card-body">
+      <!-- کنترل‌های صفحه‌بندی و مرتب‌سازی -->
+      <!-- کنترل‌های صفحه‌بندی و مرتب‌سازی -->
+      <div class="row mb-4 g-3">
+        <div class="col-12 col-md-4">
+          <select class="form-select" id="pageSize" aria-label="تعداد در صفحه">
+            <option value="10" th:text="#{product.products.pageSize.10}"></option>
+            <option value="20" th:text="#{product.products.pageSize.20}"></option>
+          </select>
+        </div>
+        <div class="col-12 col-md-4">
+          <select class="form-select" id="sortBy" aria-label="مرتب‌سازی">
+            <option value="name" th:text="#{product.products.sort.name}"></option>
+<!--            <option value="brand" th:text="#{products.sort.brand}"></option>-->
+          </select>
+        </div>
+      </div>
+
+      <!-- جدول محصولات -->
+      <div class="table-responsive" id="products-table">
+        <table class="table table-striped table-hover">
+          <thead class="table-dark">
+          <tr>
+            <th th:text="#{product.products.name}"></th>
+            <th th:text="#{product.products.brand}"></th>
+            <th th:text="#{product.products.actions}"></th>
+
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="product : ${products.content}">
+            <td th:text="${product.name}"></td>
+            <td th:text="${product.brand}"></td>
+            <td>
+              <div class="d-flex gap-2">
+                <button class="btn btn-sm btn-warning"
+                        data-bs-toggle="modal"
+                        data-bs-target="#productModal"
+                        th:data-id="${product.id}">
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button class="btn btn-sm btn-danger"
+                        th:data-id="${product.id}">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- صفحه‌بندی -->
+      <nav class="mt-4" aria-label="صفحه‌بندی">
+        <ul class="pagination justify-content-center">
+          <li th:each="page : ${#numbers.sequence(0, products.totalPages-1)}"
+              class="page-item"
+              th:classappend="${page == products.number} ? 'active'">
+            <a class="page-link"
+               th:text="${page + 1}"
+               th:data-page="${page}"
+               role="button"></a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+</html>

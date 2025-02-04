@@ -1,0 +1,44 @@
+<div th:fragment="order-modal">
+    <div class="modal fade" id="orderModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" th:text="#{order.orders.modal.title}"></h5>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <form id="orderForm">
+                    <div class="modal-body">
+                        <input type="hidden" id="orderId">
+                        <div class="mb-3">
+                            <label th:text="#{order.orders.orderDate}"></label>
+                            <input type="text" class="form-control" id="orderDate" required>
+                        </div>
+                        <div class="mb-3">
+                            <label th:text="#{order.orders.price}"></label>
+                            <input type="text" class="form-control" id="price" required>
+
+                        </div>
+                        <div class="mb-3">
+                            <label th:text="#{order.orders.customer}"></label>
+                            <input type="text" class="form-control" id="customer" required>
+
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                <span th:text="#{order.orders.cancel}"></span>
+                            </button>
+                            <button type="submit" class="btn btn-primary">
+                                <span th:text="#{order.orders.save}"></span>
+                            </button>
+                        </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

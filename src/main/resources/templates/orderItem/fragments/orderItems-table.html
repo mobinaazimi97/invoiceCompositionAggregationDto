@@ -1,0 +1,83 @@
+<div th:fragment="orderItems-table">
+  <div class="card shadow">
+    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+      <h3 class="mb-0" th:text="#{orderItem.orderItems.title}"></h3>
+      <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#orderItemModal">
+        <i class="fas fa-plus me-2"></i>
+        <span th:text="#{orderItem.orderItems.add}"></span>
+      </button>
+    </div>
+
+    <div class="card-body">
+      <!-- کنترل‌های صفحه‌بندی و مرتب‌سازی -->
+      <!-- کنترل‌های صفحه‌بندی و مرتب‌سازی -->
+      <div class="row mb-4 g-3">
+        <div class="col-12 col-md-4">
+          <select class="form-select" id="pageSize" aria-label="تعداد در صفحه">
+            <option value="10" th:text="#{orderItem.orderItems.pageSize.10}"></option>
+            <option value="20" th:text="#{orderItem.orderItems.pageSize.20}"></option>
+          </select>
+
+<!--          todo->maybe comment this tag...-->
+        </div>
+<!--        <div class="col-12 col-md-4">-->
+<!--          <select class="form-select" id="sortBy" aria-label="مرتب‌سازی">-->
+<!--            <option value="id" th:text="#{orderItem.orderItems.sort.id}"></option>-->
+            <!--            <option value="brand" th:text="#{products.sort.brand}"></option>-->
+<!--          </select>-->
+<!--        </div>-->
+      </div>
+
+      <!-- جدول محصولات -->
+      <div class="table-responsive" id="orderItems-table">
+        <table class="table table-striped table-hover">
+          <thead class="table-dark">
+          <tr>
+            <th th:text="#{orderItem.orderItems.product}"></th>
+            <th th:text="#{orderItem.orderItems.order}"></th>
+            <th th:text="#{orderItem.orderItems.quantity}"></th>
+            <th th:text="#{orderItem.orderItems.actions}"></th>
+
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="orderItem : ${orderItems}">
+            <td th:text="${orderItem.product.id}"></td>
+            <td th:text="${orderItem.order}"></td>
+            <td th:text="${orderItem.quantity}"></td>
+            <td>
+              <div class="d-flex gap-2">
+                <button class="btn btn-sm btn-warning"
+                        data-bs-toggle="modal"
+                        data-bs-target="#orderItemModal"
+                        th:data-id="${orderItem.id}">
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button class="btn btn-sm btn-danger"
+                        th:data-id="${orderItem.id}">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- صفحه‌بندی -->
+      <nav class="mt-4" aria-label="صفحه‌بندی">
+        <ul class="pagination justify-content-center">
+          <li th:each="page : ${#numbers.sequence(0, orderItems.totalPages-1)}"
+              class="page-item"
+              th:classappend="${page == orderItems.number} ? 'active'">
+            <a class="page-link"
+               th:text="${page + 1}"
+               th:data-page="${page}"
+               role="button"></a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+</html>

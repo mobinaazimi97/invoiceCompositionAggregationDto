@@ -1,0 +1,51 @@
+<div th:fragment="orderItem-modal">
+  <div class="modal fade" id="orderItemModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" th:text="#{orderItem.orderItems.modal.title}"></h5>
+          <button class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <form id="orderItemForm">
+          <div class="modal-body">
+            <input type="hidden" id="orderItemId">
+            <div class="mb-3">
+              <label th:text="#{orderItem.orderItems.product}"></label>
+              <input type="text" class="form-control" id="product" required>
+            </div>
+            <div class="mb-3">
+              <label th:text="#{orderItem.orderItems.order}"></label>
+              <input type="text" class="form-control" id="order" required>
+
+            </div>
+            <div class="mb-3">
+              <label th:text="#{orderItem.orderItems.quantity}"></label>
+
+<!--              todo->maybe type==number-->
+              <input type="text" class="form-control" id="quantity" required>
+
+            </div>
+
+            <!--                        <div class="mb-3">-->
+            <!--                            <label th:text="#{products.serialNumber}"></label>-->
+            <!--                            <input type="text" class="form-control" id="serialNumber">-->
+            <!--                        </div>-->
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                <span th:text="#{orderItem.orderItems.cancel}"></span>
+              </button>
+              <button type="submit" class="btn btn-primary">
+                <span th:text="#{orderItem.orderItems.save}"></span>
+              </button>
+            </div>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
