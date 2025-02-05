@@ -23,22 +23,14 @@ public class OrderItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    //for test in ide :
-//   @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.PERSIST},fetch = FetchType.EAGER)
+    //@NotBlank(message = "{validation.quantity}")
+    private int quantity;
 
-    //for test in Ui :
     @ManyToOne
-//  @NotBlank(message = "{validation.product}")
     private Product product;
-
-//    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REFRESH}, fetch = FetchType.EAGER)
-//    @NotBlank(message = "{validation.order}")
 
     //For Dto
     @OneToOne
     private Order order;
-
-//    @NotBlank(message = "{validation.quantity}")
-    private int quantity;
 
 }

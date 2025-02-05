@@ -25,10 +25,10 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    //    @NotBlank(message = "{validation.orderPrice}")
+    //@NotBlank(message = "{validation.orderPrice}")
     private double price; //todo-.maybe longs true!!
 
-    //    @NotBlank(message = "{validation.orderDate}")
+    //@NotBlank(message = "{validation.orderDate}")
     private LocalDate orderDate;
 
 //    @OneToMany(mappedBy = "order")
@@ -37,6 +37,7 @@ public class Order {
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinTable(name = "orders_customers")
     private Customer customer;
+
     //For Dto
     @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER, orphanRemoval = true)
     private OrderItem orderItem;
