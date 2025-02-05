@@ -5,6 +5,7 @@ import org.springframework.data.domain.Pageable;
 
 public interface OrderItemService {
     OrderItem saveOrderItem(OrderItem orderItem);
+    OrderItem updateOrderItem(OrderItem orderItem);
     void deleteOrderItem(Long id);
     Page<OrderItem>getAllOrderItems(Pageable pageable);
 }

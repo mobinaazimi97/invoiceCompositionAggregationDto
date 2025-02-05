@@ -18,6 +18,11 @@ public class OrderItemServiceImpl implements OrderItemService {
     }
 
     @Override
+    public OrderItem updateOrderItem(OrderItem orderItem) {
+        return orderItemRepository.save(orderItem);
+    }
+
+    @Override
     public void deleteOrderItem(Long id) {
         orderItemRepository.deleteById(id);
     }

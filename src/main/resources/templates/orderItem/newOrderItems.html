@@ -4,18 +4,20 @@
       dir="rtl"
       th:attr="lang=${#locale.language}, dir=${#locale.language == 'fa' ? 'rtl' : 'ltr'}">
 <head>
-    <title th:text="#{orderItem.title}"></title>
+        <title th:text="#{orderItem.orderItems.title}"></title>
     <th:block th:replace="~{orderItem/fragments/head-tag :: head-tag}"></th:block>
 </head>
 <body>
+
 
 <div>
     <span class="val-err" th:if="${#fields.hasErrors()}" th:each="err : ${#fields.allErrors()}" ></span>
 
 </div>
 
-<form id="orderItemForm" th:object="${orderItem}" th:action="@{/newOrderItems.html}" th:method="POST">
-    <div class="modal-body">
+<form id="orderItemForm" th:object="${orderItem}" th:action="@{/newOrderItems}" th:method="POST">
+
+        <div class="modal-body">
         <input type="hidden" id="orderItemId">
         <div class="mb-3">
             <label th:text="#{orderItem.orderItems.product}"></label>
@@ -32,6 +34,7 @@
     <button type="submit" class="btn btn-primary" id="saveOrderItem">
         <span th:text="#{orderItem.orderItems.save}"></span>
     </button>
+
 </form>
 
 <th:block th:replace="~{orderItem/fragments/scripts :: scripts}"></th:block>

@@ -1,6 +1,7 @@
 package com.mftplus.aggregationcustomer.order;
 
 import com.mftplus.aggregationcustomer.customer.Customer;
+import com.mftplus.aggregationcustomer.orderItem.OrderItem;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,9 +34,12 @@ public class Order {
 //    @OneToMany(mappedBy = "order")
 //    private List<OrderItem> orderItemList;
 
-    @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinTable(name = "orders_customers")
     private Customer customer;
+    //For Dto
+    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER, orphanRemoval = true)
+    private OrderItem orderItem;
 
 }
 

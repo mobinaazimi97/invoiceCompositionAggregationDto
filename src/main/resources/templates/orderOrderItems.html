@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OrderOrderItem</title>
+</head>
+<body>
+<form id="orderOrderItemForm" th:object="${orderOrderItemDto}" th:action="@{/orderOrderItems}" th:method="POST">
+    <input type="datetime-local" class="form-control" id="orderDate" placeholder="orderDate">
+    <input type="text" class="form-control" id="price" placeholder="price">
+    <input type="text" class="form-control" id="firstName" placeholder="firstName">
+    <input type="text" class="form-control" id="quantity" placeholder="quantity">
+    <input type="submit" value="Save" class="btn btn-primary" id="save" >
+</form>
+
+</body>
+</html>

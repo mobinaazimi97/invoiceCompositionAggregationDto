@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <!--    <meta charset="UTF-8">-->
+  <title>OrderItemProduct</title>
+</head>
+<body>
+<form id="itemProductForm" th:object="${orderItemProductDto}" th:action="@{/itemProducts}" th:method="POST">
+  <input type="text" class="form-control" id="name" placeholder="ProductName">
+  <input type="text" class="form-control" id="brand" placeholder="ProductBrand">
+  <input type="text" class="form-control" id="price" placeholder="ProductPrice">
+  <input type="text" class="form-control" id="quantity" placeholder="ItemQuantity">
+  <input type="submit" class="btn btn-primary" id="save" value="save">
+</form>
+</body>
+</html>

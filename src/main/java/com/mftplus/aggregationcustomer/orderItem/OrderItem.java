@@ -17,6 +17,7 @@ import lombok.experimental.SuperBuilder;
 
 @Entity(name = "orderItemEntity")
 @Table(name = "orderItem_tbl")
+
 public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,12 +27,15 @@ public class OrderItem {
 //   @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.PERSIST},fetch = FetchType.EAGER)
 
     //for test in Ui :
-    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-//    @NotBlank(message = "{validation.product}")
+    @ManyToOne
+//  @NotBlank(message = "{validation.product}")
     private Product product;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REFRESH}, fetch = FetchType.EAGER)
+//    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REFRESH}, fetch = FetchType.EAGER)
 //    @NotBlank(message = "{validation.order}")
+
+    //For Dto
+    @OneToOne
     private Order order;
 
 //    @NotBlank(message = "{validation.quantity}")

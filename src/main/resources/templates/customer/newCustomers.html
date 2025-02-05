@@ -22,16 +22,19 @@
             <input type="text" class="form-control" id="firstName" name="firstName">
             <span class="val-err" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
         </div>
+
         <div class="mb-3">
             <label th:text="#{customers.lastName}"></label>
             <input type="text" class="form-control" id="lastName" name="lastName">
             <span class="val-err" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
         </div>
+
         <div class="mb-3">
             <label th:text="#{customers.email}"></label>
             <input type="email" class="form-control" id="email" name="email">
             <span class="val-err" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
         </div>
+
         <div class="mb-3">
             <label th:text="#{customers.phone}"></label>
             <input type="tel" class="form-control" id="phone" name="phone">

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Slf4j
-public class OrderItemDataInitialize implements CommandLineRunner {
+public class OrderItemDataInitialize implements CommandLineRunner{
 
     private final OrderItemFakeDataService orderItemFakeDataService;
     private final OrderItemService orderItemService;

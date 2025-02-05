@@ -5,10 +5,13 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class OrderServiceImpl implements OrderService {
+
     @Autowired
     private OrderRepository orderRepository;
+
 //    private final OrderRepository orderRepository;
 //
 //    public OrderServiceImpl(OrderRepository orderRepository) {
@@ -21,6 +24,11 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public Order updateOrder(Order order) {
+        return orderRepository.save(order);
+    }
+
+    @Override
     public void deleteOrder(Long id) {
         orderRepository.deleteById(id);
     }
@@ -29,4 +37,10 @@ public class OrderServiceImpl implements OrderService {
     public Page<Order> getAllOrders(Pageable pageable) {
         return orderRepository.findAll(pageable);
     }
+
+    @Override
+    public Order getOrderById(Long id) {
+        return orderRepository.findById(id).orElse(null);
+    }
+
 }
